@@ -13,7 +13,7 @@ import './index.css';
 ReactDOM.render(
   <MuiThemeProvider>
     <Router history={browserHistory}>
-      <Route path="/" component={Frame}>
+      <Route path="/random" component={Frame}>
         <IndexRoute component={Home} />
         <Route path="*" component={Error} />
       </Route>
