@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-
 import AppBar from 'material-ui/AppBar';
 import Dialog from 'material-ui/Dialog';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
+import IconButton from 'material-ui/IconButton';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 
-export default class AppHeader extends Component {
+export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {open: false};
@@ -20,8 +20,10 @@ export default class AppHeader extends Component {
   }
 
   render() {
-    const aboutButton = (
-      <FlatButton label="About" onTouchTap={this.handleDialog} />
+    const codeButton = (
+      <IconButton>
+        <FontIcon className="material-icons">code</FontIcon>
+      </IconButton>
     );
 
     const closeButton = (
@@ -31,7 +33,8 @@ export default class AppHeader extends Component {
     return (
       <div>
         <AppBar
-          iconElementRight={aboutButton}
+          iconElementRight={codeButton}
+          onRightIconButtonTouchTap={this.handleDialog}
           showMenuIconButton={false}
           title="Random"
         />
@@ -40,7 +43,6 @@ export default class AppHeader extends Component {
           autoScrollBodyContent={true}
           onRequestClose={this.handleDialog}
           open={this.state.open}
-          title="About"
         >
           <List>
             <Subheader>GitHub</Subheader>

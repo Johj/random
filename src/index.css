@@ -3,6 +3,7 @@
   //outline: 1px solid red;
 }
 
-html, body {
+body {
+  background-color: #F5F5F5;
   margin: 0;
 }

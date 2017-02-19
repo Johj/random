@@ -7,7 +7,10 @@ const style = {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    margin: '1%',
+    marginTop: '1%',
+    marginBottom: '1%',
+    marginLeft: '25%',
+    marginRight: '25%',
     padding: '1%',
   }
 };

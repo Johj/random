@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import moment from 'moment';
-
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import TextField from 'material-ui/TextField';
+import moment from 'moment';
 
 import Panel from '../component/Panel';
 
@@ -12,65 +11,66 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
       generated: '',
       list: [],
       open: false,
       textField: {
         min: {
           errorText: '',
-          valid: true,
           value: 0,
         },
         max: {
           errorText: '',
-          valid: true,
           value: 1,
         }
       },
       timestamp: '',
+      valid: true,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGenerate = this.handleGenerate.bind(this);
     this.handleSnackbar = this.handleSnackbar.bind(this);
   }
 
-  errorCheck(input, key) {
+  checkInput(input, key) {
     let copy = Object.assign({}, this.state);
-    if (input === '') {
-      copy.textField[key].errorText = 'This field is required.';
-      copy.textField[key].valid = false;
-    } else if (isNaN(input)) {
-      copy.textField[key].errorText = 'This field requires a number.';
-      copy.textField[key].valid = false;
-    } else {
+    copy.valid = !isNaN(input) && input !== '';
+    if (copy.valid) {
       copy.textField[key].value = parseInt(input, 10);
-      copy.textField[key].errorText = '';
-      copy.textField[key].valid = true;
+      this.checkMinMax(copy, key);
+    } else {
+      copy.textField[key].errorText = input === '' ? 'Required.' : 'Number required.';
     }
     return copy;
   }
 
-  handleChange(event) {
-    this.setState(this.errorCheck(event.target.value, event.target.id));
+  checkMinMax(copy, key) {
+    copy.valid = copy.textField['min'].value < copy.textField['max'].value;
+    if (copy.valid) {
+      copy.textField['min'].errorText = copy.textField['max'].errorText = '';
+    } else {
+      copy.textField[key].errorText = key === 'min' ? 'Must be less than maximum.' : 'Must be greater than minimum.';
+    }
   }
 
-  handleSubmit(event) {
+  handleChange(event) {
+    this.setState(this.checkInput(event.target.value, event.target.id));
+  }
+
+  handleGenerate(event) {
     event.preventDefault();
-    if (this.state.textField['min'].valid && this.state.textField['max'].valid) {
+    if (this.state.valid) {
       this.setState({
-        count: this.state.count + 1,
         generated: Math.floor(Math.random() * (this.state.textField['max'].value - this.state.textField['min'].value + 1)) + this.state.textField['min'].value,
         timestamp: moment().format(),
       },
       () => {
         const entry = [
           <TableRow>
-            <TableRowColumn>{this.state.count}</TableRowColumn>
+            <TableRowColumn style={{width: '5px'}}>{this.state.list.length + 1}</TableRowColumn>
             <TableRowColumn>{this.state.generated}</TableRowColumn>
+            <TableRowColumn>[{this.state.textField['min'].value}, {this.state.textField['max'].value}]</TableRowColumn>
             <TableRowColumn>{this.state.timestamp}</TableRowColumn>
-            <TableRowColumn>{this.state.textField['min'].value}</TableRowColumn>
-            <TableRowColumn>{this.state.textField['max'].value}</TableRowColumn>
           </TableRow>
         ];
         this.setState({
@@ -106,18 +106,17 @@ export default class Home extends Component {
           /><br />
           <RaisedButton
             label="Generate"
-            onTouchTap={this.handleSubmit}
+            onTouchTap={this.handleGenerate}
           />
         </Panel>
         <Panel>
-          <Table fixedHeader={true} height={'40vh'}>
+          <Table bodyStyle={{overflow: 'visible'}} fixedHeader={true} height={'40vh'}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
-                <TableHeaderColumn>#</TableHeaderColumn>
+                <TableHeaderColumn style={{width: '5px'}}>#</TableHeaderColumn>
                 <TableHeaderColumn>Generated</TableHeaderColumn>
+                <TableHeaderColumn>[Minimum, Maximum]</TableHeaderColumn>
                 <TableHeaderColumn>Timestamp</TableHeaderColumn>
-                <TableHeaderColumn>Minimum</TableHeaderColumn>
-                <TableHeaderColumn>Maximum</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -127,7 +126,7 @@ export default class Home extends Component {
         </Panel>
         <Snackbar
           open={this.state.open}
-          message="Please correctly fill in the fields."
+          message="Fill the fields correctly."
           autoHideDuration={3000}
           onRequestClose={this.handleSnackbar}
         />

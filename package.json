@@ -1,11 +1,30 @@
 {
   "name": "random",
   "version": "0.1.0",
-  "private": true,
+  "description": "Random numbers with React.",
+  "keywords": [
+    "random",
+    "rng",
+    "react",
+    "material",
+    "design"
+  ],
   "homepage": "https://johj.github.io/random",
-  "devDependencies": {
-    "gh-pages": "^0.12.0",
-    "react-scripts": "0.9.0"
+  "bugs": {
+    "url": "https://github.com/Johj/random/issues"
+  },
+  "license": "MIT",
+  "author": "Peter Han",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Johj/random.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "dependencies": {
     "material-ui": "^0.17.0",
@@ -15,26 +34,9 @@
     "react-router": "^3.0.2",
     "react-tap-event-plugin": "^2.0.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build&&gh-pages -d build"
+  "devDependencies": {
+    "gh-pages": "^0.12.0",
+    "react-scripts": "0.9.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Johj/random.git"
-  },
-  "keywords": [
-    "random",
-    "react",
-    "material",
-    "design"
-  ],
-  "author": "Peter Han",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Johj/random/issues"
-  }
+  "private": true
 }
