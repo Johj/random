@@ -20,9 +20,11 @@ export default class Frame extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={{height: '100vh', width: '100vw'}}>
+        <div>
           <Header />
-          {this.props.children}
+          <div style={{display: 'flex', justifyContent: 'center',}}>
+            {this.props.children}
+          </div>
         </div>
       </MuiThemeProvider>
     );

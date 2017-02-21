@@ -9,9 +9,8 @@ const style = {
     flexDirection: 'column',
     marginTop: '1%',
     marginBottom: '1%',
-    marginLeft: '25%',
-    marginRight: '25%',
     padding: '1%',
+    width: '800px',
   }
 };
 
