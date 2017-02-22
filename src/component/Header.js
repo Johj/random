@@ -20,26 +20,22 @@ export default class Header extends Component {
   }
 
   render() {
-    const codeButton = (
-      <IconButton>
-        <FontIcon className="material-icons">code</FontIcon>
-      </IconButton>
-    );
-
-    const closeButton = (
-      <FlatButton label="Close" onTouchTap={this.handleDialog} />
-    );
-
     return (
       <div>
         <AppBar
-          iconElementRight={codeButton}
+          iconElementRight={
+            <IconButton>
+              <FontIcon className="material-icons">code</FontIcon>
+            </IconButton>
+          }
           onRightIconButtonTouchTap={this.handleDialog}
           showMenuIconButton={false}
           title="Random"
         />
         <Dialog
-          actions={closeButton}
+          actions={
+            <FlatButton label="CLOSE" onTouchTap={this.handleDialog} />
+          }
           autoScrollBodyContent={true}
           onRequestClose={this.handleDialog}
           open={this.state.open}

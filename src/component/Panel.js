@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import Paper from 'material-ui/Paper';
 
 const style = {
@@ -7,10 +6,11 @@ const style = {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '1%',
-    marginBottom: '1%',
-    padding: '1%',
-    width: '800px',
+    margin: '8px',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    paddingBottom: '16px',
+    maxWidth: '800px',
   }
 };
 

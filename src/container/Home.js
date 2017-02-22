@@ -49,7 +49,7 @@ export default class Home extends Component {
     if (copy.valid) {
       copy.textField['min'].errorText = copy.textField['max'].errorText = '';
     } else {
-      copy.textField[key].errorText = key === 'min' ? 'Must be less than maximum.' : 'Must be greater than minimum.';
+      copy.textField[key].errorText = key === 'min' ? 'Must be less than max.' : 'Must be greater than min.';
     }
   }
 
@@ -93,14 +93,14 @@ export default class Home extends Component {
           <TextField
             defaultValue={this.state.textField['min'].value}
             errorText={this.state.textField['min'].errorText}
-            floatingLabelText="Minimum"
+            floatingLabelText="min"
             id="min"
             onChange={this.handleChange}
           />
           <TextField
             defaultValue={this.state.textField['max'].value}
             errorText={this.state.textField['max'].errorText}
-            floatingLabelText="Maximum"
+            floatingLabelText="max"
             id="max"
             onChange={this.handleChange}
           /><br />
@@ -110,12 +110,12 @@ export default class Home extends Component {
           />
         </Panel>
         <Panel>
-          <Table bodyStyle={{overflow: 'visible'}} fixedHeader={true} height={'40vh'}>
+          <Table bodyStyle={{overflow: 'visible'}} height={'40vh'}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
                 <TableHeaderColumn style={{width: '5px'}}>#</TableHeaderColumn>
                 <TableHeaderColumn>Generated</TableHeaderColumn>
-                <TableHeaderColumn>[Minimum, Maximum]</TableHeaderColumn>
+                <TableHeaderColumn>[Min, Max]</TableHeaderColumn>
                 <TableHeaderColumn>Timestamp</TableHeaderColumn>
               </TableRow>
             </TableHeader>
