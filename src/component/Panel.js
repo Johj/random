@@ -2,24 +2,31 @@ import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 
 const style = {
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   paper: {
-    alignItems: 'center',
+    alignItems: 'stretch',
     display: 'flex',
     flexDirection: 'column',
-    margin: '8px',
-    paddingLeft: '8px',
-    paddingRight: '8px',
-    paddingBottom: '16px',
-    maxWidth: '800px',
-  }
+    marginLeft: '8px',
+    marginRight: '8px',
+    marginTop: '8px',
+    padding: '8px',
+    width: '400px',
+  },
 };
 
 export default class Panel extends Component {
   render() {
     return (
-      <Paper style={style.paper} zDepth={1}>
-        {this.props.children}
-      </Paper>
+      <div style={style.container}>
+        <Paper style={style.paper} zDepth={1}>
+          {this.props.children}
+        </Paper>
+      </div>
     );
   }
 }

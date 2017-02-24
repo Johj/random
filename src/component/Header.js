@@ -44,48 +44,39 @@ export default class Header extends Component {
             <Subheader>GitHub</Subheader>
             <ListItem
               href="https://github.com/Johj/random"
-              primaryText="Random"
-              secondaryText="by Peter Han"
+              primaryText="Random" secondaryText="by Peter Han"
               target="_blank"
             />
-          </List>
-          <Divider />
-          <List>
+            <Divider />
             <Subheader>Dependencies</Subheader>
             <ListItem
               href="https://github.com/callemall/material-ui"
-              primaryText="material-ui"
-              secondaryText="0.17.0"
+              primaryText="material-ui" secondaryText="0.17.0"
               target="_blank"
             />
             <ListItem
               href="https://github.com/moment/moment/"
-              primaryText="moment"
-              secondaryText="2.17.1"
+              primaryText="moment" secondaryText="2.17.1"
               target="_blank"
             />
             <ListItem
               href="https://github.com/facebook/react"
-              primaryText="react"
-              secondaryText="15.4.2"
+              primaryText="react" secondaryText="15.4.2"
               target="_blank"
             />
             <ListItem
               href="https://github.com/facebook/react/tree/master/packages/react-dom"
-              primaryText="react-dom"
-              secondaryText="15.4.2"
+              primaryText="react-dom" secondaryText="15.4.2"
               target="_blank"
             />
             <ListItem
               href="https://github.com/ReactTraining/react-router"
-              primaryText="react-router"
-              secondaryText="3.0.2"
+              primaryText="react-router" secondaryText="3.0.2"
               target="_blank"
             />
             <ListItem
               href="https://github.com/zilverline/react-tap-event-plugin"
-              primaryText="react-tap-event-plugin"
-              secondaryText="2.0.1"
+              primaryText="react-tap-event-plugin" secondaryText="2.0.1"
               target="_blank"
             />
           </List>
