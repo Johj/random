@@ -4,11 +4,9 @@ import Paper from 'material-ui/Paper';
 const style = {
   container: {
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'center',
   },
   paper: {
-    alignItems: 'stretch',
     display: 'flex',
     flexDirection: 'column',
     marginLeft: '8px',

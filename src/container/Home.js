@@ -7,6 +7,18 @@ import moment from 'moment';
 
 import Panel from '../component/Panel';
 
+const style = {
+  list: {
+    height: '40vh',
+    overflowY: 'scroll',
+  },
+  textFieldContainer: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+}
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -89,7 +101,7 @@ export default class Home extends Component {
         const entry = [
           <ListItem
             insetChildren={false}
-            primaryText={'[' + this.state.textField['min'].value + ',' + this.state.textField['max'].value + ']: ' + this.state.generated}
+            primaryText={'[' + this.state.textField['min'].value + ', ' + this.state.textField['max'].value + ']: ' + this.state.generated}
             secondaryText={(this.state.list.length + 1) + ', ' + this.state.timestamp}
           />
         ];
@@ -110,7 +122,7 @@ export default class Home extends Component {
     return (
       <div>
         <Panel>
-          <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column',}}>
+          <div style={style.textFieldContainer}>
             <TextField
               defaultValue={this.state.textField['min'].value}
               errorText={this.state.textField['min'].errorText}
@@ -133,7 +145,7 @@ export default class Home extends Component {
           />
         </Panel>
         <Panel>
-          <List style={{height: '40vh', overflowY: 'scroll'}}>
+          <List style={style.list}>
             {this.state.list}
           </List>
         </Panel>
